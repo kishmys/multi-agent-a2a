@@ -1,0 +1,8 @@
+[project]
+name = "answer-agent"
+version = "0.1.0"
+dependencies = [
+    "google-genai",
+    "fastapi", 
+    "uvicorn",
+]

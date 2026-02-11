@@ -1,0 +1,8 @@
+[project]
+name = "question-agent"
+version = "0.1.0"
+dependencies = [
+    "google-genai",
+    "fastapi",
+    "uvicorn",
+]
