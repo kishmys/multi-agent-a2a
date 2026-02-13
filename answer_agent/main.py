@@ -12,6 +12,7 @@ model = genai.GenerativeModel('gemini-2.5-flash')
 class AnswerRequest(BaseModel):
     questions: list  # List of question objects from Question Agent
     topic: str
+    feedback: str = None
 
 @app.post("/generate_answers")
 def generate_answers(request: AnswerRequest):
@@ -26,6 +27,11 @@ def generate_answers(request: AnswerRequest):
     Below are questions that need comprehensive, educational answers:
 
     {questions_text}
+
+    {"PREVIOUS ATTEMPT FEEDBACK: " + request.feedback + """
+
+    Please IMPROVE your answers based on this feedback. Address the issues mentioned and enhance the quality.
+    """ if request.feedback else ""}
 
     Provide detailed answers for each question. Return ONLY a JSON array matching this format:
     [
